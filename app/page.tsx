@@ -90,9 +90,9 @@ export default async function Home() {
         <p><span className="text-sm">Date completed:</span> <span className="text-lg font-semibold">{art.objectEndDate}</span></p>
         <p><span className="text-sm">Medium:</span> <span className="text-lg font-semibold">{art.medium}</span></p>
         <h2 className="text-xl font-bold mt-6">Useful Links</h2>
-        <a href={art.objectWikidata_URL} className="mt-2 hover:underline" target="_blank">Artwork's wikidata page<FaArrowUpRightFromSquare className="inline ml-1 mb-0.5" /></a>
-        <a href={art.artistWikidata_URL} className="mt-1 hover:underline" target="_blank">Artwork's Met museum page<FaArrowUpRightFromSquare className="inline ml-1 mb-0.5" /></a>
-        <a href={art.artistWikidata_URL} className="mt-1 hover:underline" target="_blank">Artist's wikidata page<FaArrowUpRightFromSquare className="inline ml-1 mb-0.5" /></a>
+        <a href={art.objectWikidata_URL} className="mt-2 hover:underline" target="_blank">Artwork&apos;s wikidata page<FaArrowUpRightFromSquare className="inline ml-1 mb-0.5" /></a>
+        <a href={art.artistWikidata_URL} className="mt-1 hover:underline" target="_blank">Artwork&apos;s Met museum page<FaArrowUpRightFromSquare className="inline ml-1 mb-0.5" /></a>
+        <a href={art.artistWikidata_URL} className="mt-1 hover:underline" target="_blank">Artist&apos;s wikidata page<FaArrowUpRightFromSquare className="inline ml-1 mb-0.5" /></a>
         <NewArtButton />
       </div>
     </main>
