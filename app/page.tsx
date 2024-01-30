@@ -1,6 +1,8 @@
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import NewArtButton from "./components/NewArtButton";
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
 
   const highlightsWithPicturesIds = await getHighlightsWithPictures()
