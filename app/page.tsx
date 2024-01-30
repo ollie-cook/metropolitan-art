@@ -7,6 +7,7 @@ export default async function Home() {
 
   const art = await getNewArt(highlightsWithPicturesIds)
   //console.log(art)
+  
   /*
   const art = {
     objectID: 591828,
@@ -79,12 +80,12 @@ export default async function Home() {
   */
 
   return (
-    <main className="h-screen relative left-1/2 -translate-x-1/2 w-5/6 flex">
-      <div className="w-1/2 p-4 flex items-center">
+    <main className="min-h-screen relative left-1/2 -translate-x-1/2 w-5/6 flex flex-col pb-12 md:h-screen md:pb-0 md:flex-row">
+      <div className="w-full md:w-1/2 p-4 flex items-center justify-center">
         <img src={art.primaryImage} className="w-full h-full object-contain"></img>
       </div>
-      <div className="relative w-1/2 p-8 flex flex-col justify-center">
-        <h1 className="text-5xl font-bold">{art.title}</h1>
+      <div className="relative w-full md:w-1/2 md:p-8 flex flex-col justify-center">
+        <h1 className="text-3xl md:text-5xl font-bold">{art.title}</h1>
         <p className="mt-2"><span className="text-sm">{art.artistRole}</span>: <span className="text-lg font-semibold">{art.artistDisplayName}</span></p>
         <p><span className="text-sm">Date completed:</span> <span className="text-lg font-semibold">{art.objectEndDate}</span></p>
         <p><span className="text-sm">Medium:</span> <span className="text-lg font-semibold">{art.medium}</span></p>

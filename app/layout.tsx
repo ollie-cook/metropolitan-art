@@ -16,8 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bitter.className} object-cover`} style={{backgroundImage: 'url(/background.png)'}}>{children}</body>
-      <p className="absolute bottom-2 right-2 text-sm">Built by <a href="https://www.olliecookie.com" className="underline" target="_blank">Ollie Cook</a>&#x1f36a;</p>
+      <body className={`${bitter.className} object-cover relative`} style={{backgroundImage: 'url(/background.png)'}}>
+        {children}
+        <p className="absolute -bottom-0 right-2 text-sm md:bottom-2 md:right-2">Built by <a href="https://www.olliecookie.com" className="underline" target="_blank">Ollie Cook</a>&#x1f36a;</p>
+      </body>
+      
     </html>
   );
 }

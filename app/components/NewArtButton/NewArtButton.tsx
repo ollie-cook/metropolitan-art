@@ -12,10 +12,10 @@ export default function NewArtButton() {
 
   return (
     <button 
-      className="absolute p-2 bottom-24 left-1/2 -translate-x-1/2 bg-green-300 rounded-sm font-semibold hover:bg-green-400"
+      className="self-center mt-8 md:absolute p-2 md:bottom-24 md:left-1/2 md:-translate-x-1/2 bg-green-300 rounded-sm font-semibold hover:bg-green-400"
       onClick = {handleClick}
     >
-      New painting
+      New artwork
     </button>
   )
 }
