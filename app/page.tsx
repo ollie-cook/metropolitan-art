@@ -1,113 +1,130 @@
-import Image from "next/image";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import NewArtButton from "./components/NewArtButton";
 
-export default function Home() {
+export default async function Home() {
+
+  const highlightsWithPicturesIds = await getHighlightsWithPictures()
+
+  const art = await getNewArt(highlightsWithPicturesIds)
+  //console.log(art)
+  /*
+  const art = {
+    objectID: 591828,
+    isHighlight: true,
+    accessionNumber: '120.32P17 P17',
+    accessionYear: '',
+    isPublicDomain: true,
+    primaryImage: 'https://images.metmuseum.org/CRDImages/li/original/li120.32P17 P17.R.jpg',
+    primaryImageSmall: 'https://images.metmuseum.org/CRDImages/li/web-large/li120.32P17 P17.R.jpg',
+    additionalImages: [],
+    constituents: [
+      {
+        constituentID: 161420,
+        role: 'Author',
+        name: 'Andrea Palladio',
+        constituentULAN_URL: 'http://vocab.getty.edu/page/ulan/500021650',
+        constituentWikidata_URL: 'https://www.wikidata.org/wiki/Q177692',
+        gender: ''
+      }
+    ],
+    department: 'The Libraries',
+    objectName: '',
+    title: "I quattro libri dell'architettura di Andrea Palladio . . .",
+    culture: "Venice: Domenico de'Franceschi, 1570",
+    period: '',
+    dynasty: '',
+    reign: '',
+    portfolio: '',
+    artistRole: 'Author',
+    artistPrefix: '',
+    artistDisplayName: 'Andrea Palladio',
+    artistDisplayBio: 'Italian, Padua 1508–1580 Vicenza',
+    artistSuffix: '',
+    artistAlphaSort: 'Palladio, Andrea',
+    artistNationality: 'Italian',
+    artistBeginDate: '1508',
+    artistEndDate: '1580',
+    artistGender: '',
+    artistWikidata_URL: 'https://www.wikidata.org/wiki/Q177692',
+    artistULAN_URL: 'http://vocab.getty.edu/page/ulan/500021650',
+    objectDate: '1570',
+    objectBeginDate: 1570,
+    objectEndDate: 1570,
+    medium: 'Illustrated book',
+    dimensions: '4 pts. in 1 vol., 128 pp.; H: 4 3/4 in. (12 cm)',
+    measurements: null,
+    creditLine: 'Library Purchase',
+    geographyType: '',
+    city: '',
+    state: '',
+    county: '',
+    country: '',
+    region: '',
+    subregion: '',
+    locale: '',
+    locus: '',
+    excavation: '',
+    river: '',
+    classification: '',
+    rightsAndReproduction: '',
+    linkResource: '',
+    metadataDate: '2021-12-28T04:39:58.65Z',
+    repository: 'Metropolitan Museum of Art, New York, NY',
+    objectURL: 'https://www.metmuseum.org/art/collection/search/591828',
+    tags: null,
+    objectWikidata_URL: 'https://www.wikidata.org/wiki/Q29385985',
+    isTimelineWork: false,
+    GalleryNumber: ''
+  }
+  */
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <main className="h-screen relative left-1/2 -translate-x-1/2 w-5/6 flex">
+      <div className="w-1/2 p-4 flex items-center">
+        <img src={art.primaryImage} className="w-full h-full object-contain"></img>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="relative w-1/2 p-8 flex flex-col justify-center">
+        <h1 className="text-5xl font-bold">{art.title}</h1>
+        <p className="mt-2"><span className="text-sm">{art.artistRole}</span>: <span className="text-lg font-semibold">{art.artistDisplayName}</span></p>
+        <p><span className="text-sm">Date completed:</span> <span className="text-lg font-semibold">{art.objectEndDate}</span></p>
+        <p><span className="text-sm">Medium:</span> <span className="text-lg font-semibold">{art.medium}</span></p>
+        <h2 className="text-xl font-bold mt-6">Useful Links</h2>
+        <a href={art.objectWikidata_URL} className="mt-2 hover:underline" target="_blank">Artwork's wikidata page<FaArrowUpRightFromSquare className="inline ml-1 mb-0.5" /></a>
+        <a href={art.artistWikidata_URL} className="mt-1 hover:underline" target="_blank">Artwork's Met museum page<FaArrowUpRightFromSquare className="inline ml-1 mb-0.5" /></a>
+        <a href={art.artistWikidata_URL} className="mt-1 hover:underline" target="_blank">Artist's wikidata page<FaArrowUpRightFromSquare className="inline ml-1 mb-0.5" /></a>
+        <NewArtButton />
       </div>
     </main>
   );
 }
+
+const getHighlightsWithPictures = async () => {
+  const res = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=%22%22')
+  const data = await res.json()
+
+  return data.objectIDs;
+} 
+
+const getNewArt = async (ids: number[]) => {
+  let data: any = {};
+
+  let imageUrl = "";
+  while (imageUrl === "") {
+    const randomIndex = Math.floor(Math.random() * ids.length)
+    const id = ids[randomIndex]
+
+    const res = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/' + id)
+    const tempData = await res.json()
+
+    if (tempData.primaryImage !== "") {
+      imageUrl = data.primaryImage;
+      data = tempData;
+    }
+  }
+
+  return data;
+}
+
+
+//"https://images.metmuseum.org/CRDImages/ep/original/DT1567.jpg"
+//"https://images.metmuseum.org/CRDImages/dp/original/DP828191.jpg"
